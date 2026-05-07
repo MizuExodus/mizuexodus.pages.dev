@@ -8,9 +8,18 @@
 }
 
 body {
+    /* Your existing layout rules */
     margin: 0 auto;
     min-width: 320px;
     max-width: min(1280px, 100% - 100px);
+
+    /* The new gaming/coding aesthetic */
+    background-color: #0d1117; /* Dark charcoal/blue background */
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    color: #e6edf3; /* Light grey text so it's readable on the dark background */
 }
 
 @media (width < 880px) {
