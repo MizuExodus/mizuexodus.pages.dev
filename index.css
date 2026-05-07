@@ -734,3 +734,29 @@ html {
     font-family: Inter;
     font-display: swap;
 }
+/* At the very bottom of index.css */
+.terminal-window {
+  background: #1e1e1e;
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 20px 0;
+  border: 1px solid #333;
+}
+
+.terminal-header {
+  background: #333;
+  padding: 8px 12px;
+  display: flex;
+  gap: 6px;
+}
+
+.terminal-body {
+  padding: 15px;
+  color: #00ff00;
+  font-family: 'monospace';
+}
+
+.dot { width: 10px; height: 10px; border-radius: 50%; }
+.red { background: #ff5f56; }
+.yellow { background: #ffbd2e; }
+.green { background: #27c93f; }
