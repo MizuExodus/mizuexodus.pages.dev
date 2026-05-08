@@ -48,7 +48,7 @@ async function fetchData(env) {
         headers: {
             'accept': 'application/json',
             'authorization': `bearer ${env.GITHUB_TOKEN}`,
-            'user-agent': 'Pantherasami'
+            'user-agent': 'AutumnVN'
         },
         body: JSON.stringify({ query })
     }).then(r => r.json());
