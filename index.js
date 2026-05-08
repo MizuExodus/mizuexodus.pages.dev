@@ -300,25 +300,6 @@ function formatTimezone(timezoneDiff) {
     return `${timezoneDiff < 0 ? '-' : ''}${hour}h${minute ? ` ${minute}m` : ''}`;
 }
 
-document.querySelector('[href="/skin/Minimal.osk"]').addEventListener('click', e => {
-    e.preventDefault();
-
-    const skins = [
-        'Minimal.osk',
-        'Minimal 3.osk',
-        'Minimal EZ.osk',
-        'Minimal FL.osk',
-        'Minimal Instafade.osk',
-        'Minimal Mapping.osk'
-    ];
-
-    for (const skin of skins) {
-        const a = document.createElement('a');
-        a.href = `/skin/${encodeURIComponent(skin)}`;
-        a.download = skin;
-        a.click();
-    }
-});
 
 let isRecording = false;
 let recoder;
