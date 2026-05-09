@@ -1,3 +1,53 @@
+// AniList OAuth: parse token from URL hash after redirect
+(function parseAnilistToken() {
+    if (!window.location.hash) return;
+    const params = new URLSearchParams(window.location.hash.substring(1));
+    const token = params.get('access_token');
+    if (!token) return;
+    anilistSetToken(token);
+    history.replaceState(null, '', window.location.pathname);
+})();
+
+// Update the AniList widget if logged in
+async function loadAnilistUser() {
+    if (!anilistIsLoggedIn()) return;
+    try {
+        const { Viewer } = await anilistGetViewer();
+
+        // Hide login link, update profile link + username
+        document.getElementById('anilist-login').style.display = 'none';
+        const content = document.getElementById('anilist-content');
+        content.href = Viewer.siteUrl;
+        document.getElementById('anilist-username').textContent = Viewer.name;
+
+        // Swap SVG icon for actual avatar
+        const avatarDiv = document.getElementById('anilist-avatar');
+        avatarDiv.style.backgroundImage = `url(${Viewer.avatar.large})`;
+        avatarDiv.style.backgroundSize = 'cover';
+        avatarDiv.style.backgroundColor = 'transparent';
+        avatarDiv.querySelector('svg').style.display = 'none';
+
+        // Load activity
+        const { Page } = await anilistGetActivity(Viewer.name);
+        const activities = Page.activities;
+        const activityEls = document.querySelectorAll('.anilist .activity');
+        activities.forEach((act, i) => {
+            if (!activityEls[i]) return;
+            const el = activityEls[i];
+            el.href = act.siteUrl;
+            el.querySelector('.image').style.backgroundImage = `url(${act.media.coverImage.medium})`;
+            el.querySelector('.status').textContent = act.status;
+            el.querySelector('.title').textContent = act.media.title.userPreferred;
+            el.querySelector('time').textContent = new Date(act.createdAt * 1000).toLocaleDateString();
+        });
+    } catch (e) {
+        // Token expired or invalid — clear it
+        anilistRemoveToken();
+    }
+}
+
+loadAnilistUser();
+
 updateScrollPercent();
 ['scroll', 'resize'].forEach(e => addEventListener(e, updateScrollPercent));
 

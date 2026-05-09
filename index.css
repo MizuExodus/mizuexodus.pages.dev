@@ -761,3 +761,20 @@ html {
 .red { background: #ff5f56; }
 .yellow { background: #ffbd2e; }
 .green { background: #27c93f; }
+
+#anilist-login {
+    display: block;
+    margin-bottom: 8px;
+    color: #0af;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+#anilist-login:hover {
+    text-decoration: underline;
+}
+
+#anilist-avatar {
+    border-radius: 50%;
+    overflow: hidden;
+}
