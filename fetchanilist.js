@@ -6,10 +6,6 @@ async function anilistGetViewer() {
                 name
                 siteUrl
                 avatar { large }
-                statistics {
-                    anime { count minutesWatched episodesWatched }
-                    manga { count chaptersRead }
-                }
             }
         }
     `);
