@@ -1,6 +1,18 @@
 async function loadAnilistActivity() {
     try {
-        const { Page } = await anilistGetActivity();
+        const [{ User }, { Page }] = await Promise.all([
+            anilistGetUser(),
+            anilistGetActivity()
+        ]);
+
+        // Set avatar
+        const avatarDiv = document.getElementById('anilist-avatar');
+        avatarDiv.style.backgroundImage = `url(${User.avatar.large})`;
+        avatarDiv.style.backgroundSize = 'cover';
+        avatarDiv.style.backgroundColor = 'transparent';
+        avatarDiv.querySelector('svg').style.display = 'none';
+
+        // Set activities
         const activityEls = document.querySelectorAll('.anilist .activity');
         Page.activities.forEach((act, i) => {
             if (!activityEls[i] || !act.media) return;
