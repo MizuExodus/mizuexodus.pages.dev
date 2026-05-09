@@ -1,17 +1,6 @@
-async function anilistGetViewer() {
-    return anilistQuery(`
-        query {
-            Viewer {
-                id
-                name
-                siteUrl
-                avatar { large }
-            }
-        }
-    `);
-}
+const ANILIST_USER_ID = 7883267;
 
-async function anilistGetActivity(userId) {
+async function anilistGetActivity() {
     return anilistQuery(`
         query ($userId: Int) {
             Page(perPage: 4) {
@@ -24,11 +13,10 @@ async function anilistGetActivity(userId) {
                         media {
                             title { userPreferred }
                             coverImage { medium }
-                            siteUrl
                         }
                     }
                 }
             }
         }
-    `, { userId });
+    `, { userId: ANILIST_USER_ID });
 }

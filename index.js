@@ -1,37 +1,8 @@
-// AniList OAuth: parse token from URL hash after redirect
-(function parseAnilistToken() {
-    if (!window.location.hash) return;
-    const params = new URLSearchParams(window.location.hash.substring(1));
-    const token = params.get('access_token');
-    if (!token) return;
-    anilistSetToken(token);
-    history.replaceState(null, '', window.location.pathname);
-})();
-
-// Update the AniList widget if logged in
-async function loadAnilistUser() {
-    if (!anilistIsLoggedIn()) return;
+async function loadAnilistActivity() {
     try {
-        const { Viewer } = await anilistGetViewer();
-
-        // Hide login link, update profile link + username
-        document.getElementById('anilist-login').style.display = 'none';
-        const content = document.getElementById('anilist-content');
-        content.href = Viewer.siteUrl;
-        document.getElementById('anilist-username').textContent = Viewer.name;
-
-        // Swap SVG icon for actual avatar
-        const avatarDiv = document.getElementById('anilist-avatar');
-        avatarDiv.style.backgroundImage = `url(${Viewer.avatar.large})`;
-        avatarDiv.style.backgroundSize = 'cover';
-        avatarDiv.style.backgroundColor = 'transparent';
-        avatarDiv.querySelector('svg').style.display = 'none';
-
-        // Load activity
-        const { Page } = await anilistGetActivity(Viewer.id);
-        const activities = Page.activities;
+        const { Page } = await anilistGetActivity();
         const activityEls = document.querySelectorAll('.anilist .activity');
-        activities.forEach((act, i) => {
+        Page.activities.forEach((act, i) => {
             if (!activityEls[i] || !act.media) return;
             const el = activityEls[i];
             el.href = act.siteUrl;
@@ -41,12 +12,11 @@ async function loadAnilistUser() {
             el.querySelector('time').textContent = new Date(act.createdAt * 1000).toLocaleDateString();
         });
     } catch (e) {
-        // Token expired or invalid — clear it
-        anilistRemoveToken();
+        console.error('AniList error:', e);
     }
 }
 
-loadAnilistUser();
+loadAnilistActivity();
 
 updateScrollPercent();
 ['scroll', 'resize'].forEach(e => addEventListener(e, updateScrollPercent));
