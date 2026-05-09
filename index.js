@@ -28,7 +28,7 @@ async function loadAnilistUser() {
         avatarDiv.querySelector('svg').style.display = 'none';
 
         // Load activity
-        const { Page } = await anilistGetActivity(Viewer.name);
+        const { Page } = await anilistGetActivity(Viewer.id);
         const activities = Page.activities;
         const activityEls = document.querySelectorAll('.anilist .activity');
         activities.forEach((act, i) => {

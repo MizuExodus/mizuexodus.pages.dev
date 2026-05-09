@@ -11,11 +11,11 @@ async function anilistGetViewer() {
     `);
 }
 
-async function anilistGetActivity(username) {
+async function anilistGetActivity(userId) {
     return anilistQuery(`
-        query ($username: String) {
+        query ($userId: Int) {
             Page(perPage: 4) {
-                activities(userName: $username, sort: ID_DESC, type: MEDIA_LIST) {
+                activities(userId: $userId, sort: ID_DESC, type: MEDIA_LIST) {
                     ... on ListActivity {
                         status
                         progress
@@ -30,5 +30,5 @@ async function anilistGetActivity(username) {
                 }
             }
         }
-    `, { username });
+    `, { userId });
 }
