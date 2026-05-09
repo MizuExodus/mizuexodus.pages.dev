@@ -32,7 +32,7 @@ async function loadAnilistUser() {
         const activities = Page.activities;
         const activityEls = document.querySelectorAll('.anilist .activity');
         activities.forEach((act, i) => {
-            if (!activityEls[i]) return;
+            if (!activityEls[i] || !act.media) return;
             const el = activityEls[i];
             el.href = act.siteUrl;
             el.querySelector('.image').style.backgroundImage = `url(${act.media.coverImage.medium})`;
