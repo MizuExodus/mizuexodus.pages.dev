@@ -30,6 +30,24 @@ async function loadAnilistActivity() {
 
 loadAnilistActivity();
 
+async function loadLastFm() {
+    try {
+        const res = await fetch('/fetchlastfm');
+        if (!res.ok) return;
+        const { isPlaying, title, artist, image, url } = await res.json();
+
+        document.getElementById('lastfm-title').textContent = title;
+        document.getElementById('lastfm-artist').textContent = artist;
+        document.getElementById('lastfm-status').textContent = isPlaying ? '▶ Now Playing' : 'Last played';
+        document.getElementById('lastfm-image').style.backgroundImage = `url(${image})`;
+        document.getElementById('lastfm-link').href = url;
+    } catch (e) {
+        console.error('Last.fm error:', e);
+    }
+}
+
+loadLastFm();
+
 updateScrollPercent();
 ['scroll', 'resize'].forEach(e => addEventListener(e, updateScrollPercent));
 
