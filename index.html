@@ -2,6 +2,7 @@
 <html lang="en" translate="no">
 
 <head>
+    <script>document.documentElement.classList.add('boot-js')</script>
     <title>KusanagiAsami</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Konichiwa! Kusanagi Asami desu! Hajimemashite!">
@@ -15,12 +16,33 @@
     <link rel="canonical" href="https://kusanagiasami.pages.dev/">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/index.css">
+    <style id="boot-terminal-critical">
+        #boot-terminal{position:fixed;inset:0;z-index:100000;background:#0d1117}
+        html.boot-intro-active{overflow:hidden}
+    </style>
     <noscript>
         <link rel="stylesheet" href="/noscript.css">
+        <style>#boot-terminal{display:none!important}</style>
     </noscript>
 </head>
 
 <body style="--scroll: 0;">
+    <div id="boot-terminal" class="boot-terminal" role="presentation" aria-hidden="true">
+        <div class="boot-terminal-window">
+            <div class="boot-terminal-chrome">
+                <span class="boot-terminal-dot boot-terminal-dot--r" aria-hidden="true"></span>
+                <span class="boot-terminal-dot boot-terminal-dot--y" aria-hidden="true"></span>
+                <span class="boot-terminal-dot boot-terminal-dot--g" aria-hidden="true"></span>
+                <span class="boot-terminal-title">bash</span>
+            </div>
+            <div class="boot-terminal-body">
+                <div class="boot-terminal-line">
+                    <span class="boot-terminal-prompt">user@kusanagi:~$ </span><span id="boot-cmd" class="boot-terminal-typed"></span><span class="boot-terminal-cursor" aria-hidden="true"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/boot.js"></script>
     <div class="background"></div>
 
     <header>
