@@ -126,7 +126,7 @@ const svg =
 
 const url = `url('data:image/svg+xml,${svg}')`;
 
-Ofunction applyNameAnimation() {
+function applyNameAnimation() {
     Object.assign(document.querySelector('header svg').style, {
         maskImage: url,
         WebkitMaskImage: url,
