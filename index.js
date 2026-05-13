@@ -126,14 +126,18 @@ const svg =
 
 const url = `url('data:image/svg+xml,${svg}')`;
 
-Object.assign(document.querySelector('header svg').style, {
-    maskImage: url,
-    WebkitMaskImage: url,
-    maskRepeat: 'no-repeat',
-    WebkitMaskRepeat: 'no-repeat',
-    maskSize: '100% 100%',
-    WebkitMaskSize: '100% 100%',
-});
+Ofunction applyNameAnimation() {
+    Object.assign(document.querySelector('header svg').style, {
+        maskImage: url,
+        WebkitMaskImage: url,
+        maskRepeat: 'no-repeat',
+        WebkitMaskRepeat: 'no-repeat',
+        maskSize: '100% 100%',
+        WebkitMaskSize: '100% 100%',
+    });
+}
+
+if (!document.getElementById('boot-terminal')) applyNameAnimation();
 
 document.querySelector('.arrow svg').addEventListener('click', () => {
     smoothScrollTo(innerWidth > 880 ? .25 * innerHeight + 30 : .25 * innerHeight + 380);

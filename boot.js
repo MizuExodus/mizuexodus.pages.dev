@@ -25,6 +25,7 @@
                 root.classList.remove('boot-intro-active');
                 root.classList.add('boot-intro-done');
                 removeCriticalStyle();
+                if(typeof applyNameAnimation === 'function') applyNameAnimation();
             },
             { once: true }
         );
