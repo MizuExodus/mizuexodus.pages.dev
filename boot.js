@@ -6,7 +6,7 @@
         return;
     }
 
-    var fullCmd = "ssh -i '/home/username/.ssh/id_ed25519' user@kusanagiasami.pages.dev";
+    var fullCmd = "ssh -i ~/.ssh/id_ed25519 user@kusanagiasami.pages.dev";
     var root = document.documentElement;
     root.classList.add('boot-intro-active');
 
