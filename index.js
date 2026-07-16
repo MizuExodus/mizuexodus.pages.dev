@@ -100,7 +100,7 @@ const svg =
         'font-size:75px;' +
         'font-weight:bold;' +
         'fill:none;' +
-        'stroke:%23fff;' +
+        'stroke:%23fffde8;' + // Đã thay đổi màu vàng tươi thành màu kem nhạt dịu hơn
         'stroke-linecap:round;' +
         'stroke-linejoin:round;' +
         'stroke-width:3px;' +
