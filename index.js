@@ -100,7 +100,7 @@ const svg =
         'font-size:75px;' +
         'font-weight:bold;' +
         'fill:none;' +
-        'stroke:%23fffde8;' + 
+        'stroke:%23fff;' +
         'stroke-linecap:round;' +
         'stroke-linejoin:round;' +
         'stroke-width:3px;' +
