@@ -97,8 +97,8 @@ const svg =
       '@keyframes fade{0%{opacity:0;}to{opacity:1;}}' +
       'text{' +
         'font-family:sans-serif;' +
-        'font-size:75px;' +
-        'font-weight:bold;' +
+        'font-size:50px;' +
+        'font-weight:normal;' +
         'fill:none;' +
         'stroke:%23fff;' +
         'stroke-linecap:round;' +
