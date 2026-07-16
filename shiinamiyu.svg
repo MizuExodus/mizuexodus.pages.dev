@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 490 150">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&amp;display=swap');
+    
+    @keyframes dash {
+      0% { stroke-dashoffset: 1000px; }
+      100% { stroke-dashoffset: 0px; }
+    }
+    @keyframes stroke-width {
+      0% { stroke-width: 3px; }
+      100% { stroke-width: 6px; }
+    }
+    @keyframes fade {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    @keyframes glow {
+      0% {
+        filter: drop-shadow(0 0 2px #fff6) drop-shadow(0 0 8px var(--color)) drop-shadow(0 0 26px var(--color));
+      }
+      100% {
+        filter: drop-shadow(0 0 1.8px #fff6) drop-shadow(0 0 7.2px var(--color)) drop-shadow(0 0 23.5px var(--color));
+      }
+    }
+    @keyframes flicker {
+      0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; }
+      20%, 24%, 55% { opacity: .87; }
+    }
+    
+    :root {
+      --red: #f69;
+      --pink: #f9e;
+      --blue: #78f;
+      --neon-animation: glow 0.11s ease-in-out 0s infinite alternate, flicker 2s infinite 2.8s alternate;
+    }
+    
+    text {
+      font-family: 'Comfortaa', cursive, sans-serif;
+      font-size: 80px;
+      font-weight: bold;
+      fill: none;
+      stroke: var(--color);
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-width: 3px;
+      stroke-dasharray: 1000px;
+      stroke-dashoffset: 1000px;
+      
+      animation: 
+        dash 1.5s cubic-bezier(.8,0,.2,1) var(--delay) forwards,
+        stroke-width 1s cubic-bezier(.8,0,.2,1) calc(var(--delay) + .5s) forwards,
+        fade .2s linear calc(var(--delay) + 0s) forwards,
+        var(--neon-animation);
+      --color: var(--pink);
+    }
+    
+    .blue { --color: var(--blue); }
+    .red { --color: var(--red); }
+  </style>
+  
+  <!-- Dịch nhẹ Shiina sang x="30" -->
+  <text x="30" y="110" class="blue" style="--delay: 0.5s">Shiina</text>
+  
+  <!-- Kéo Miyu từ x="320" về hẳn x="270" (sát lại gần thêm 50px nữa) -->
+  <text x="270" y="110" class="red" style="--delay: 1.3s">Miyu</text>
+</svg>
