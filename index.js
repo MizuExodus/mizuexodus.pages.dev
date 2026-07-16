@@ -1,52 +1,52 @@
-async function loadAnilistActivity() {
-    try {
-        const [{ User }, { Page }] = await Promise.all([
-            anilistGetUser(),
-            anilistGetActivity()
-        ]);
+// async function loadAnilistActivity() {
+//     try {
+//         const [{ User }, { Page }] = await Promise.all([
+//             anilistGetUser(),
+//             anilistGetActivity()
+//         ]);
 
-        // Set avatar
-        const avatarDiv = document.getElementById('anilist-avatar');
-        avatarDiv.style.backgroundImage = `url(${User.avatar.large})`;
-        avatarDiv.style.backgroundSize = 'cover';
-        avatarDiv.style.backgroundColor = 'transparent';
-        avatarDiv.querySelector('svg').style.display = 'none';
+//         // Set avatar
+//         const avatarDiv = document.getElementById('anilist-avatar');
+//         avatarDiv.style.backgroundImage = `url(${User.avatar.large})`;
+//         avatarDiv.style.backgroundSize = 'cover';
+//         avatarDiv.style.backgroundColor = 'transparent';
+//         avatarDiv.querySelector('svg').style.display = 'none';
 
-        // Set activities
-        const activityEls = document.querySelectorAll('.anilist .activity');
-        Page.activities.forEach((act, i) => {
-            if (!activityEls[i] || !act.media) return;
-            const el = activityEls[i];
-            el.href = act.siteUrl;
-            el.querySelector('.image').style.backgroundImage = `url(${act.media.coverImage.medium})`;
-            el.querySelector('.status').textContent = act.status;
-            el.querySelector('.title').textContent = act.media.title.userPreferred;
-            el.querySelector('time').textContent = new Date(act.createdAt * 1000).toLocaleDateString();
-        });
-    } catch (e) {
-        console.error('AniList error:', e);
-    }
-}
+//         // Set activities
+//         const activityEls = document.querySelectorAll('.anilist .activity');
+//         Page.activities.forEach((act, i) => {
+//             if (!activityEls[i] || !act.media) return;
+//             const el = activityEls[i];
+//             el.href = act.siteUrl;
+//             el.querySelector('.image').style.backgroundImage = `url(${act.media.coverImage.medium})`;
+//             el.querySelector('.status').textContent = act.status;
+//             el.querySelector('.title').textContent = act.media.title.userPreferred;
+//             el.querySelector('time').textContent = new Date(act.createdAt * 1000).toLocaleDateString();
+//         });
+//     } catch (e) {
+//         console.error('AniList error:', e);
+//     }
+// }
 
-loadAnilistActivity();
+// loadAnilistActivity();
 
-async function loadLastFm() {
-    try {
-        const res = await fetch('/fetchlastfm');
-        if (!res.ok) return;
-        const { isPlaying, title, artist, image, url } = await res.json();
+// async function loadLastFm() {
+//     try {
+//         const res = await fetch('/fetchlastfm');
+//         if (!res.ok) return;
+//         const { isPlaying, title, artist, image, url } = await res.json();
 
-        document.getElementById('lastfm-title').textContent = title;
-        document.getElementById('lastfm-artist').textContent = artist;
-        document.getElementById('lastfm-status').textContent = isPlaying ? '▶ Now Playing' : 'Last played';
-        document.getElementById('lastfm-image').style.backgroundImage = `url(${image})`;
-        document.getElementById('lastfm-link').href = url;
-    } catch (e) {
-        console.error('Last.fm error:', e);
-    }
-}
+//         document.getElementById('lastfm-title').textContent = title;
+//         document.getElementById('lastfm-artist').textContent = artist;
+//         document.getElementById('lastfm-status').textContent = isPlaying ? '▶ Now Playing' : 'Last played';
+//         document.getElementById('lastfm-image').style.backgroundImage = `url(${image})`;
+//         document.getElementById('lastfm-link').href = url;
+//     } catch (e) {
+//         console.error('Last.fm error:', e);
+//     }
+// }
 
-loadLastFm();
+// loadLastFm();
 
 updateScrollPercent();
 ['scroll', 'resize'].forEach(e => addEventListener(e, updateScrollPercent));
