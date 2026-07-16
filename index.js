@@ -93,7 +93,7 @@ const svg =
   '<svg xmlns="http://www.w3.org/2000/svg" viewBox="65 292 420 96">' +
   '<style>' +
   '@keyframes dash{0%{stroke-dashoffset:500px;}to{stroke-dashoffset:0;};}' +
-  '@keyframes stroke-width{0%{stroke-width:3px;}to{stroke-width:12px;};}' +
+  '@keyframes stroke-width{0%{stroke-width:3px;}to{stroke-width:6px;};}' +
   '@keyframes fade{0%{opacity:0;}to{opacity:1;};}' +
   'path{' +
   'fill:none;' +
