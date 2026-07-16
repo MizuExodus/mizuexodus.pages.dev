@@ -90,29 +90,49 @@ function applyBackgroundTransition() {
 }
 
 const svg = 
-  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 695 100">' +
+  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -40 695 180">' +
     '<style>' +
       '@import url("https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400;500;600&amp;display=swap");' +
-      '@keyframes dash{0%{stroke-dashoffset:1000px;}to{stroke-dashoffset:0;}}' +
-      '@keyframes stroke-width{0%{stroke-width:1px;}to{stroke-width:3px;}}' +
-      '@keyframes fade{0%{opacity:0;}to{opacity:1;}}' +
+      '@keyframes dash{0%{stroke-dashoffset:727px}to{stroke-dashoffset:0}}' +
+      '@keyframes stroke-width{0%{stroke-width:1px}to{stroke-width:3px}}' +
+      '@keyframes fade{0%{opacity:0}to{opacity:1}}' +    
+      '@keyframes glow{0%{filter:drop-shadow(0 0 2px %23fff6) drop-shadow(0 0 8px var(--color)) drop-shadow(0 0 26px var(--color))}to{filter:drop-shadow(0 0 1.8px %23fff6) drop-shadow(0 0 7.2px var(--color)) drop-shadow(0 0 23.5px var(--color))}}' +
+      '@keyframes flicker{0%,18%,22%,25%,53%,57%,to{opacity:1}20%,24%,55%{opacity:.87}}' +
+      ':root{--red:%23f69;--pink:%23f9e;--blue:%2378f;--neon-animation:glow 0.11s ease-in-out 0s infinite alternate, flicker 2s infinite 2.8s alternate}' +
       'text{' +
         'font-family:"Google Sans Flex", sans-serif;' +
         'font-size:75px;' +
         'font-weight:500;' +
+      '}' +
+      'tspan{' +
         'fill:none;' +
-        'stroke:%23fff;' +
+        'stroke:var(--color);' +
         'stroke-linecap:round;' +
         'stroke-linejoin:round;' +
         'stroke-width:1px;' +
-        'stroke-dasharray:1000px;' +
-        'stroke-dashoffset:1000px;' +
+        'stroke-dasharray:727px;' +
+        'stroke-dashoffset:727px;' +
         'animation:dash 1.5s cubic-bezier(.8,0,.2,1) var(--delay) forwards,' +
                   'stroke-width 1.5s cubic-bezier(.8,0,.2,1) calc(var(--delay) + .5s) forwards,' +
-                  'fade .2s linear var(--delay) forwards;' +
+                  'fade .2s linear calc(var(--delay) + 0s) forwards,' +
+                  'var(--neon-animation);' +
+        '--color:var(--pink);' + 
       '}' +
+      '.blue{--color:var(--blue)}' +
+      '.red{--color:var(--red)}' +
     '</style>' +
-    '<text x="40" y="70" style="--delay:0.5s">Shiina Miyu</text>' +
+    '<text x="40" y="90">' +
+      '<tspan class="blue" style="--delay:0.5s">S</tspan>' +
+      '<tspan style="--delay:0.7s">h</tspan>' +
+      '<tspan style="--delay:0.9s">i</tspan>' +
+      '<tspan style="--delay:1.1s">i</tspan>' +
+      '<tspan style="--delay:1.3s">n</tspan>' +
+      '<tspan style="--delay:1.5s">a</tspan>' +
+      '<tspan dx="25" class="red" style="--delay:1.7s">M</tspan>' +
+      '<tspan style="--delay:1.9s">i</tspan>' +
+      '<tspan class="blue" style="--delay:2.1s">y</tspan>' +
+      '<tspan style="--delay:2.3s">u</tspan>' +
+    '</text>' +
   '</svg>';
 
 const url = `url('data:image/svg+xml,${svg}')`;
