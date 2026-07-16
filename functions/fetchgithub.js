@@ -19,9 +19,9 @@ export async function onRequestGet({ env, request, waitUntil }) {
 
 async function fetchData(env) {
     const query = `{
-        a: repository(owner: "Pantherasami", name: "kusanagiasami.pages.dev") { stargazers { totalCount } forks { totalCount } }
+        a: repository(owner: "MizuExodus", name: "mizuexodus.pages.dev") { stargazers { totalCount } forks { totalCount } }
 
-        z: user(login: "Pantherasami") {
+        z: user(login: "MizuExodus") {
             repositories(first: 100, ownerAffiliations: OWNER) {
                 nodes {
                     stargazerCount
