@@ -92,26 +92,27 @@ function applyBackgroundTransition() {
 const svg = 
   '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 695 100">' +
     '<style>' +
+      '@import url("https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400;500;600&amp;display=swap");' +
       '@keyframes dash{0%{stroke-dashoffset:1000px;}to{stroke-dashoffset:0;}}' +
-      '@keyframes stroke-width{0%{stroke-width:3px;}to{stroke-width:12px;}}' +
+      '@keyframes stroke-width{0%{stroke-width:1px;}to{stroke-width:3px;}}' +
       '@keyframes fade{0%{opacity:0;}to{opacity:1;}}' +
       'text{' +
-        'font-family:sans-serif;' +
+        'font-family:"Google Sans Flex", sans-serif;' +
         'font-size:75px;' +
-        'font-weight:bold;' +
+        'font-weight:500;' +
         'fill:none;' +
-        'stroke:%23fffde8;' + 
+        'stroke:%23fff;' +
         'stroke-linecap:round;' +
         'stroke-linejoin:round;' +
-        'stroke-width:3px;' +
+        'stroke-width:1px;' +
         'stroke-dasharray:1000px;' +
         'stroke-dashoffset:1000px;' +
-        'animation:dash 1s cubic-bezier(.8,0,.2,1) var(--delay) forwards,' +
-                  'stroke-width 1s cubic-bezier(.8,0,.2,1) calc(var(--delay) + .5s) forwards,' +
+        'animation:dash 1.5s cubic-bezier(.8,0,.2,1) var(--delay) forwards,' +
+                  'stroke-width 1.5s cubic-bezier(.8,0,.2,1) calc(var(--delay) + .5s) forwards,' +
                   'fade .2s linear var(--delay) forwards;' +
       '}' +
     '</style>' +
-    '<text x="40" y="75" style="--delay:0.5s">Shiina Miyu</text>' +
+    '<text x="40" y="70" style="--delay:0.5s">Shiina Miyu</text>' +
   '</svg>';
 
 const url = `url('data:image/svg+xml,${svg}')`;
