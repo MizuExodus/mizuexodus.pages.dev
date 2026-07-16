@@ -135,17 +135,8 @@ const svg =
     '</text>' +
   '</svg>';
 
-const url = `url('data:image/svg+xml,${svg}')`;
-
 function applyNameAnimation() {
-    Object.assign(document.querySelector('header svg').style, {
-        maskImage: url,
-        WebkitMaskImage: url,
-        maskRepeat: 'no-repeat',
-        WebkitMaskRepeat: 'no-repeat',
-        maskSize: '100% 100%',
-        WebkitMaskSize: '100% 100%',
-    });
+    document.querySelector('header h1').innerHTML = svg;
 }
 
 if (!document.getElementById('boot-terminal')) applyNameAnimation();
