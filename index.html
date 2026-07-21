@@ -401,10 +401,17 @@
         </div>
     </footer>
 
-    <script defer src="/anilist.js"></script>
+<script defer src="/anilist.js"></script>
     <script defer src="/fetchanilist.js"></script>
     <script defer src="/index.js"></script>
     <script defer src="/min.js"></script>
+    <script>
+        document.addEventListener('click', function() {
+            var myAudio = document.querySelector('audio');
+            if (myAudio && myAudio.paused) {
+                myAudio.play();
+            }
+        }, { once: true });
+    </script>
 </body>
-
 </html>
