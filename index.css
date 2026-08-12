@@ -35,7 +35,10 @@ body {
     z-index: -1;
     filter: blur(clamp(0px, calc(50px * var(--scroll, 0) + -5px), 10px)) brightness(clamp(.7, calc(-.5 * var(--scroll, 0) + .85), .8));
     inset: -30px;
-    background: #9af var(--background) center/cover no-repeat;
+    width: calc(100% + 60px);
+    height: calc(100% + 60px);
+    background-color: #9af;
+    object-fit: cover;
 }
 
 header {
