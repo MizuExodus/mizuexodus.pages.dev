@@ -405,12 +405,15 @@
     <script defer src="/index.js"></script>
     <script defer src="/min.js"></script>
     <script>
-        document.addEventListener('click', function() {
-            var myAudio = document.querySelector('audio');
-            if (myAudio && myAudio.paused) {
-                myAudio.play();
-            }
-        }, { once: true });
-    </script>
+document.addEventListener('click', function() {
+  var myAudio = document.querySelector('audio');
+  if (myAudio) {
+    myAudio.volume = 0.25;
+    if (myAudio.paused) {
+      myAudio.play();
+    }
+  }
+}, { once: true });
+</script>
 </body>
 </html>
